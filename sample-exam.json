@@ -1,0 +1,171 @@
+{
+  "examMetadata": {
+    "id": "stats-101-midterm",
+    "title": "Statistics 101 - Midterm Exam",
+    "subject": "Statistics",
+    "description": "Covers descriptive statistics and probability basics",
+    "version": "1.0",
+    "author": "George",
+    "timeLimit": 60,
+    "passingScore": 70,
+    "allowedModes": ["practice", "assessment"]
+  },
+
+  "questions": [
+    {
+      "id": "q1",
+      "type": "multiple-choice",
+      "category": "descriptive-stats",
+      "difficulty": "easy",
+      "points": 2,
+      "question": "What does the mean represent in a dataset?",
+      "options": [
+        "The middle value when data is ordered",
+        "The arithmetic average of all values",
+        "The most frequently occurring value",
+        "The range of the dataset"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The mean is the arithmetic average, calculated by summing all values and dividing by the count.",
+      "hints": [
+        "Think about how you calculate this measure from all the data points",
+        "It involves adding up all values and dividing",
+        "It's also called the 'arithmetic average'"
+      ],
+      "commonMistakes": [
+        {
+          "misconception": "Confusing mean with median",
+          "hint": "Mean uses ALL values equally, median only cares about the middle position"
+        },
+        {
+          "misconception": "Confusing mean with mode",
+          "hint": "Mean is calculated mathematically, mode is simply counted"
+        }
+      ]
+    },
+
+    {
+      "id": "q2",
+      "type": "true-false",
+      "category": "probability",
+      "difficulty": "medium",
+      "points": 2,
+      "question": "The probability of two independent events both occurring is found by adding their individual probabilities.",
+      "correctAnswer": false,
+      "explanation": "For independent events to BOTH occur, you MULTIPLY their probabilities. Addition is used for OR (either event occurring).",
+      "hints": [
+        "Think about the difference between AND vs OR in probability",
+        "Review the multiplication rule for independent events",
+        "Consider: if each event has 50% chance, would adding give you 100%?"
+      ],
+      "commonMistakes": [
+        {
+          "misconception": "Confusing AND (multiply) with OR (add)",
+          "hint": "When BOTH events must occur, use multiplication. When EITHER can occur, use addition."
+        }
+      ]
+    },
+
+    {
+      "id": "q3",
+      "type": "short-answer",
+      "category": "descriptive-stats",
+      "difficulty": "medium",
+      "points": 5,
+      "maxLength": 200,
+      "question": "Calculate the variance for this dataset: [2, 4, 6, 8, 10]. Show your work.",
+      "rubric": {
+        "keyPoints": [
+          "Calculate mean (which is 6)",
+          "Find squared deviations from mean",
+          "Sum the squared deviations (should be 40)",
+          "Divide by n (population) or n-1 (sample)",
+          "Final answer: 8 (population) or 10 (sample)"
+        ],
+        "gradingCriteria": {
+          "correct": "Shows all steps correctly, arrives at 8 or 10 with proper justification",
+          "partial": "Correct method but arithmetic error, or correct answer without full work",
+          "incorrect": "Wrong formula or major conceptual error"
+        }
+      },
+      "expectedAnswer": "Mean = (2+4+6+8+10)/5 = 30/5 = 6. Squared deviations: (2-6)^2=16, (4-6)^2=4, (6-6)^2=0, (8-6)^2=4, (10-6)^2=16. Sum = 40. Population variance = 40/5 = 8. Sample variance = 40/4 = 10.",
+      "hints": [
+        "Start by calculating the mean of all five numbers",
+        "Remember: variance measures spread by using SQUARED deviations",
+        "Did you square each deviation before averaging them?"
+      ],
+      "commonMistakes": [
+        {
+          "pattern": "forgot to square",
+          "hint": "Variance uses SQUARED deviations, not absolute values. Did you square each difference?"
+        },
+        {
+          "pattern": "wrong denominator",
+          "hint": "Are you calculating population variance (divide by 5) or sample variance (divide by 4)? Both are valid if justified."
+        }
+      ]
+    },
+
+    {
+      "id": "q4",
+      "type": "long-answer",
+      "category": "probability",
+      "difficulty": "hard",
+      "points": 10,
+      "maxLength": 500,
+      "question": "A company conducts quality checks on 1000 products. 3% are defective. If you randomly select 2 products without replacement, what is the probability that both are defective? Show your work and explain your reasoning clearly.",
+      "rubric": {
+        "keyPoints": [
+          "Calculate number of defective products (30 out of 1000)",
+          "Recognize this is conditional probability (without replacement)",
+          "First selection: P(defective) = 30/1000",
+          "Second selection: P(defective | first defective) = 29/999",
+          "Multiply probabilities: (30/1000) x (29/999)",
+          "Calculate final answer: approximately 0.000870 or 0.087%",
+          "Explain reasoning step-by-step"
+        ],
+        "gradingCriteria": {
+          "excellent": "All steps shown correctly, clear explanation, correct final answer (9-10 points)",
+          "good": "Minor calculation error but method is correct, good explanation (7-8 points)",
+          "satisfactory": "Correct approach but missing steps or unclear explanation (5-6 points)",
+          "needs-improvement": "Incorrect method or major conceptual gap (1-4 points)",
+          "incorrect": "Completely wrong approach or no work shown (0 points)"
+        }
+      },
+      "expectedAnswer": "First, calculate defective products: 3% of 1000 = 0.03 x 1000 = 30 defective products. Since we're selecting without replacement, the probabilities change after the first selection. P(1st defective) = 30/1000 = 0.03. If the first is defective, there are now 29 defective products left out of 999 total. P(2nd defective | 1st defective) = 29/999. For BOTH events to occur, multiply: P(both defective) = (30/1000) x (29/999) = 870/999000 = approximately 0.0008709 or approximately 0.0871%.",
+      "hints": [
+        "First step: How many products out of 1000 are defective? Calculate 3% of 1000.",
+        "After selecting one defective product, how many remain? How many total products remain?",
+        "Remember: 'without replacement' means the second probability is affected by the first selection.",
+        "For both events to happen, you need to multiply their probabilities."
+      ],
+      "commonMistakes": [
+        {
+          "pattern": "used 30/1000 twice",
+          "hint": "After taking one defective product, both the numerator AND denominator change."
+        },
+        {
+          "pattern": "added instead of multiplied",
+          "hint": "When BOTH events must occur (not just one or the other), multiply the probabilities."
+        }
+      ]
+    }
+  ],
+
+  "settings": {
+    "shuffleQuestions": false,
+    "shuffleOptions": false,
+    "showProgressBar": true,
+    "allowReview": true,
+    "practiceMode": {
+      "maxHintsPerQuestion": 3,
+      "showHintsProgressively": true,
+      "allowUnlimitedAttempts": true
+    },
+    "assessmentMode": {
+      "oneAttemptOnly": true,
+      "showResultsAfterSubmit": true,
+      "allowReviewWithAnswers": true
+    }
+  }
+}

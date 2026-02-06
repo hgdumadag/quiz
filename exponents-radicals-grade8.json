@@ -1,0 +1,341 @@
+﻿{
+  "examMetadata": {
+    "id": "grade8-exponents-radicals-set1",
+    "title": "Grade 8 Competition Math - Exponents & Radicals (Set 1)",
+    "subject": "Mathematics",
+    "description": "Contest-style Grade 8 set on exponents and radicals with easy, medium, and hard questions.",
+    "version": "1.0",
+    "author": "Generated from user-provided exam",
+    "timeLimit": 50,
+    "passingScore": 70,
+    "allowedModes": ["practice", "assessment"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "easy",
+      "points": 2,
+      "question": "Compute: 2^3 x 2^4",
+      "rubric": { "keyPoints": ["Apply product rule for same base"] },
+      "expectedAnswer": "128"
+    },
+    {
+      "id": "q2",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "easy",
+      "points": 2,
+      "question": "Compute: 5^0",
+      "rubric": { "keyPoints": ["Any nonzero number to the zero power is 1"] },
+      "expectedAnswer": "1"
+    },
+    {
+      "id": "q3",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "easy",
+      "points": 2,
+      "question": "Compute: 3^(-2)",
+      "rubric": { "keyPoints": ["Negative exponent means reciprocal"] },
+      "expectedAnswer": "1/9"
+    },
+    {
+      "id": "q4",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "easy",
+      "points": 2,
+      "question": "Compute: sqrt(49)",
+      "rubric": { "keyPoints": ["Principal square root"] },
+      "expectedAnswer": "7"
+    },
+    {
+      "id": "q5",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "easy",
+      "points": 2,
+      "question": "Simplify: sqrt(16x^2)",
+      "rubric": { "keyPoints": ["Separate perfect square factors"] },
+      "expectedAnswer": "4x"
+    },
+    {
+      "id": "q6",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "easy",
+      "points": 2,
+      "question": "Compute: 10^3 div 10^1",
+      "rubric": { "keyPoints": ["Subtract exponents when dividing same base"] },
+      "expectedAnswer": "100"
+    },
+    {
+      "id": "q7",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "easy",
+      "points": 2,
+      "question": "Simplify: (4^2)^3",
+      "rubric": { "keyPoints": ["Power of a power multiplies exponents"] },
+      "expectedAnswer": "4^6"
+    },
+    {
+      "id": "q8",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "easy",
+      "points": 2,
+      "question": "Simplify: sqrt(81a^2)",
+      "rubric": { "keyPoints": ["Extract perfect squares"] },
+      "expectedAnswer": "9a"
+    },
+    {
+      "id": "q9",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "easy",
+      "points": 2,
+      "question": "Compute: 2^5 div 2^2",
+      "rubric": { "keyPoints": ["Subtract exponents when dividing same base"] },
+      "expectedAnswer": "8"
+    },
+    {
+      "id": "q10",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "easy",
+      "points": 2,
+      "question": "Compute: sqrt(1)",
+      "rubric": { "keyPoints": ["Principal square root"] },
+      "expectedAnswer": "1"
+    },
+    {
+      "id": "q11",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "medium",
+      "points": 3,
+      "question": "Simplify: 3^2 x 9^3",
+      "rubric": { "keyPoints": ["Rewrite 9 as 3^2 and combine exponents"] },
+      "expectedAnswer": "3^8"
+    },
+    {
+      "id": "q12",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "medium",
+      "points": 3,
+      "question": "Simplify: sqrt(50)",
+      "rubric": { "keyPoints": ["Factor out largest perfect square"] },
+      "expectedAnswer": "5sqrt(2)"
+    },
+    {
+      "id": "q13",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "medium",
+      "points": 3,
+      "question": "Simplify: 2^4 x 4^3",
+      "rubric": { "keyPoints": ["Rewrite 4 as 2^2 and combine exponents"] },
+      "expectedAnswer": "2^10"
+    },
+    {
+      "id": "q14",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "medium",
+      "points": 3,
+      "question": "Simplify: sqrt(72x^2)",
+      "rubric": { "keyPoints": ["Extract perfect square factors"] },
+      "expectedAnswer": "6xsqrt(2)"
+    },
+    {
+      "id": "q15",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "medium",
+      "points": 3,
+      "question": "Compute: 5^3 / 25",
+      "rubric": { "keyPoints": ["Rewrite denominator as 5^2"] },
+      "expectedAnswer": "5"
+    },
+    {
+      "id": "q16",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "medium",
+      "points": 3,
+      "question": "Compute: (sqrt(3))^4",
+      "rubric": { "keyPoints": ["Square then square again"] },
+      "expectedAnswer": "9"
+    },
+    {
+      "id": "q17",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "medium",
+      "points": 3,
+      "question": "Simplify: sqrt(18) + sqrt(8)",
+      "rubric": { "keyPoints": ["Simplify each radical and combine like radicals"] },
+      "expectedAnswer": "5sqrt(2)"
+    },
+    {
+      "id": "q18",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "medium",
+      "points": 3,
+      "question": "Compute: 16^(3/2)",
+      "rubric": { "keyPoints": ["Apply fractional exponent as square root then cube"] },
+      "expectedAnswer": "64"
+    },
+    {
+      "id": "q19",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "medium",
+      "points": 3,
+      "question": "Compute: 27^(2/3)",
+      "rubric": { "keyPoints": ["Cube root then square"] },
+      "expectedAnswer": "9"
+    },
+    {
+      "id": "q20",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "medium",
+      "points": 3,
+      "question": "Simplify: sqrt(a^4 b^2)",
+      "rubric": { "keyPoints": ["Use square root of powers"] },
+      "expectedAnswer": "a^2b"
+    },
+    {
+      "id": "q21",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "hard",
+      "points": 4,
+      "question": "If 2^x = 16, find 4^(x-1).",
+      "rubric": { "keyPoints": ["Convert everything to base 2"] },
+      "expectedAnswer": "4",
+      "hints": ["Convert everything to base 2."]
+    },
+    {
+      "id": "q22",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "hard",
+      "points": 4,
+      "question": "Simplify: sqrt(48)/sqrt(3)",
+      "rubric": { "keyPoints": ["Combine radicals as one quotient first"] },
+      "expectedAnswer": "4",
+      "hints": ["Combine radicals before simplifying."]
+    },
+    {
+      "id": "q23",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "hard",
+      "points": 4,
+      "question": "If 9^x = 27, find x.",
+      "rubric": { "keyPoints": ["Rewrite both sides as powers of 3"] },
+      "expectedAnswer": "3/2",
+      "hints": ["Rewrite both sides as powers of 3."]
+    },
+    {
+      "id": "q24",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "hard",
+      "points": 4,
+      "question": "Simplify: sqrt(12 + 2sqrt(35)) + sqrt(12 - 2sqrt(35)).",
+      "rubric": { "keyPoints": ["Use the (sqrt(a)+sqrt(b))^2 pattern"] },
+      "expectedAnswer": "2sqrt(6)",
+      "hints": ["Use the (sqrt(a)+sqrt(b))^2 pattern."]
+    },
+    {
+      "id": "q25",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "hard",
+      "points": 4,
+      "question": "Simplify: 2^(x+1) + 2^x.",
+      "rubric": { "keyPoints": ["Factor out common power"] },
+      "expectedAnswer": "3*2^x",
+      "hints": ["Factor out the smaller power."]
+    },
+    {
+      "id": "q26",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "hard",
+      "points": 4,
+      "question": "Find x: sqrt(5^x) = 25.",
+      "rubric": { "keyPoints": ["Square both sides and compare exponents"] },
+      "expectedAnswer": "4",
+      "hints": ["Square both sides first."]
+    },
+    {
+      "id": "q27",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "hard",
+      "points": 4,
+      "question": "Simplify: 8^(2/3) / 4^(1/2).",
+      "rubric": { "keyPoints": ["Convert to base 2"] },
+      "expectedAnswer": "2",
+      "hints": ["Convert to base 2."]
+    },
+    {
+      "id": "q28",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "hard",
+      "points": 4,
+      "question": "If a = sqrt(5) + 2, find a^(-1).",
+      "rubric": { "keyPoints": ["Rationalize with conjugate"] },
+      "expectedAnswer": "sqrt(5)-2",
+      "hints": ["Multiply by the conjugate."]
+    },
+    {
+      "id": "q29",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "hard",
+      "points": 4,
+      "question": "Simplify: sqrt(2)(sqrt(8) - sqrt(2)).",
+      "rubric": { "keyPoints": ["Simplify inner radicals then distribute"] },
+      "expectedAnswer": "2",
+      "hints": ["Simplify inside first."]
+    },
+    {
+      "id": "q30",
+      "type": "short-answer",
+      "category": "exponents-radicals",
+      "difficulty": "hard",
+      "points": 4,
+      "question": "Evaluate: (sqrt(3) + 1)^2 - (sqrt(3) - 1)^2.",
+      "rubric": { "keyPoints": ["Use identity (a+b)^2 - (a-b)^2 = 4ab"] },
+      "expectedAnswer": "4sqrt(3)",
+      "hints": ["Use identity: (a+b)^2 - (a-b)^2 = 4ab."]
+    }
+  ],
+  "settings": {
+    "shuffleQuestions": false,
+    "shuffleOptions": false,
+    "showProgressBar": true,
+    "allowReview": true,
+    "practiceMode": {
+      "maxHintsPerQuestion": 1,
+      "showHintsProgressively": true,
+      "allowUnlimitedAttempts": true
+    },
+    "assessmentMode": {
+      "oneAttemptOnly": false,
+      "showResultsAfterSubmit": true,
+      "allowReviewWithAnswers": true
+    }
+  }
+}
