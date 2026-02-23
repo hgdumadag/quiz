@@ -34,37 +34,62 @@ export default function ResultsDashboard() {
     );
   }, [exams]);
 
-  // Load results on mount
+  const loadResults = useCallback(async (isActive = () => true) => {
+    if (!currentUser?.id) {
+      if (!isActive()) return;
+      setLoading(false);
+      setResults([]);
+      return;
+    }
+
+    try {
+      const userResults = await storageManager.getResultsForUser(currentUser.id);
+      if (!isActive()) return;
+      setResults(userResults || []);
+    } catch (err) {
+      console.error('Failed to load results:', err);
+      if (!isActive()) return;
+      addToast('Failed to load results. Please try again.', 'error');
+    } finally {
+      if (!isActive()) return;
+      setLoading(false);
+    }
+  }, [currentUser?.id, storageManager, addToast]);
+
+  // Load results on mount/current user change and keep in sync with admin updates.
   useEffect(() => {
     let cancelled = false;
 
-    async function loadResults() {
-      if (!currentUser?.id) {
-        setLoading(false);
-        return;
-      }
+    const isActive = () => !cancelled;
+    const guardedLoad = async () => {
+      await loadResults(isActive);
+    };
 
-      try {
-        const userResults = await storageManager.getResultsForUser(currentUser.id);
-        if (!cancelled) {
-          setResults(userResults || []);
-        }
-      } catch (err) {
-        console.error('Failed to load results:', err);
-        if (!cancelled) {
-          addToast('Failed to load results. Please try again.', 'error');
-        }
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
-    }
+    guardedLoad();
 
-    loadResults();
+    const onResultsUpdated = () => {
+      guardedLoad();
+    };
+    const onStorage = (event) => {
+      if (event.key === 'ies_results_last_updated') {
+        guardedLoad();
+      }
+    };
+    const onFocus = () => {
+      guardedLoad();
+    };
+
+    window.addEventListener('ies_results_updated', onResultsUpdated);
+    window.addEventListener('storage', onStorage);
+    window.addEventListener('focus', onFocus);
 
     return () => {
       cancelled = true;
+      window.removeEventListener('ies_results_updated', onResultsUpdated);
+      window.removeEventListener('storage', onStorage);
+      window.removeEventListener('focus', onFocus);
     };
-  }, [currentUser?.id, storageManager, addToast]);
+  }, [loadResults]);
 
   // Auto-expand result from viewParams
   useEffect(() => {

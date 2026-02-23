@@ -268,6 +268,23 @@ class StorageManager {
     return this.idb.getAll(IDB_STORES.RESULTS);
   }
 
+  /**
+   * Delete a single result by id.
+   * @param {string} id
+   * @returns {Promise<void>}
+   */
+  async deleteResult(id) {
+    return this.idb.delete(IDB_STORES.RESULTS, id);
+  }
+
+  /**
+   * Delete all result records.
+   * @returns {Promise<void>}
+   */
+  async clearResults() {
+    return this.idb.clear(IDB_STORES.RESULTS);
+  }
+
   // ---------------------------------------------------------------------------
   // Session state (sessionStorage)
   // ---------------------------------------------------------------------------

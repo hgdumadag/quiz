@@ -13,6 +13,17 @@ export default function ResultsExporter() {
   const [loading, setLoading] = useState(true);
   const [filterExam, setFilterExam] = useState('');
   const [filterUser, setFilterUser] = useState('');
+  const [deletingIds, setDeletingIds] = useState([]);
+
+  const broadcastResultsUpdated = () => {
+    const timestamp = String(Date.now());
+    try {
+      localStorage.setItem('ies_results_last_updated', timestamp);
+    } catch {
+      // storage unavailable
+    }
+    window.dispatchEvent(new CustomEvent('ies_results_updated', { detail: { timestamp } }));
+  };
 
   useEffect(() => {
     let cancelled = false;
@@ -103,6 +114,57 @@ export default function ResultsExporter() {
     }
   };
 
+  const handleDeleteResult = async (result) => {
+    if (!result?.id) {
+      addToast('Cannot delete this result because it has no id.', 'error');
+      return;
+    }
+
+    const confirmed = window.confirm(
+      `Delete this result for "${getUserName(result.userId)}" on "${getExamTitle(result.examId)}"? This cannot be undone.`,
+    );
+    if (!confirmed) return;
+
+    setDeletingIds((prev) => [...prev, result.id]);
+    try {
+      await storageManager.deleteResult(result.id);
+      setResults((prev) => prev.filter((r) => r.id !== result.id));
+      broadcastResultsUpdated();
+      addToast('Result deleted.', 'success');
+    } catch (err) {
+      addToast(`Delete failed: ${err.message}`, 'error');
+    } finally {
+      setDeletingIds((prev) => prev.filter((id) => id !== result.id));
+    }
+  };
+
+  const handleDeleteFiltered = async () => {
+    if (filteredResults.length === 0) return;
+
+    const deletableIds = filteredResults.map((r) => r.id).filter(Boolean);
+    if (deletableIds.length === 0) {
+      addToast('No deletable result ids were found for the current filter.', 'warning');
+      return;
+    }
+
+    const confirmed = window.confirm(
+      `Delete ${deletableIds.length} filtered result(s)? This cannot be undone.`,
+    );
+    if (!confirmed) return;
+
+    setDeletingIds((prev) => [...prev, ...deletableIds]);
+    try {
+      await Promise.all(deletableIds.map((id) => storageManager.deleteResult(id)));
+      setResults((prev) => prev.filter((r) => !deletableIds.includes(r.id)));
+      broadcastResultsUpdated();
+      addToast(`${deletableIds.length} result(s) deleted.`, 'success');
+    } catch (err) {
+      addToast(`Bulk delete failed: ${err.message}`, 'error');
+    } finally {
+      setDeletingIds((prev) => prev.filter((id) => !deletableIds.includes(id)));
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
@@ -165,15 +227,22 @@ export default function ResultsExporter() {
           {/* Export Buttons */}
           <div className="flex gap-2 flex-shrink-0">
             <button
+              onClick={handleDeleteFiltered}
+              disabled={filteredResults.length === 0 || deletingIds.length > 0}
+              className="px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-lg hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors whitespace-nowrap"
+            >
+              Delete Filtered
+            </button>
+            <button
               onClick={handleExportSummary}
-              disabled={filteredResults.length === 0}
+              disabled={filteredResults.length === 0 || deletingIds.length > 0}
               className="px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors whitespace-nowrap"
             >
               Summary CSV
             </button>
             <button
               onClick={handleExportDetailed}
-              disabled={filteredResults.length === 0}
+              disabled={filteredResults.length === 0 || deletingIds.length > 0}
               className="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors whitespace-nowrap"
             >
               Detailed CSV
@@ -235,12 +304,16 @@ export default function ResultsExporter() {
                   <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Date
                   </th>
+                  <th className="text-right px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Actions
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
                 {filteredResults.map((result, idx) => {
                   const scorePercent = getScorePercent(result);
                   const passed = getPassFail(result);
+                  const isDeleting = result.id ? deletingIds.includes(result.id) : false;
 
                   return (
                     <tr key={result.id || idx} className="hover:bg-gray-50">
@@ -286,6 +359,15 @@ export default function ResultsExporter() {
                           : result.createdAt
                           ? formatDate(result.createdAt)
                           : 'N/A'}
+                      </td>
+                      <td className="px-6 py-4 text-right">
+                        <button
+                          onClick={() => handleDeleteResult(result)}
+                          disabled={!result.id || isDeleting || deletingIds.length > 0}
+                          className="text-red-600 hover:text-red-800 text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                        >
+                          {isDeleting ? 'Deleting...' : 'Delete'}
+                        </button>
                       </td>
                     </tr>
                   );
